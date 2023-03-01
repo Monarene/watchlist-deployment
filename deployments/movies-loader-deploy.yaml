@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movies-loader
+  namespace: watchlist
+spec:
+  selector:
+    matchLabels:
+      app: movies-loader
+  template:
+    metadata: 
+      labels: 
+        app: movies-loader
+    spec:
+      containers:
+      - name: movies-loader
+        image: monarene/movie-loader:develop
+        env:
+        - name: AWS_REGION
+          value: us-east-2
+        - name: SQS_URL
+          value: https://sqs.us-east-2.amazonaws.com/796834059009/movies_to_parse_sandbox-test
