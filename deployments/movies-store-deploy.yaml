@@ -26,4 +26,4 @@ spec:
         - containerPort: 3000
         env:
         - name: MONGO_URI
-          value: mongodb://root:root@mongodb/watchlist?retryWrites=true&w=majority&poolSize=1
+          value: mongodb://root:PASSWORD@mongodb/watchlist?retryWrites=true&w=majority&poolSize=1
