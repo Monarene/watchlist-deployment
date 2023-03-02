@@ -25,8 +25,8 @@ spec:
             secretKeyRef:
               name: mongodb-access
               key: database
-        - name: MONGO_URI
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-access
-              key: uri
+        # - name: MONGO_URI
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mongodb-access
+        #       key: uri

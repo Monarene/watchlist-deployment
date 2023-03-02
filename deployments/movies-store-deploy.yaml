@@ -17,9 +17,9 @@ spec:
         image: monarene/movie-store:develop
         ports:
         - containerPort: 3000
-        env:
-        - name: MONGO_URI
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-access
-              key: uri
+        # env:
+        # - name: MONGO_URI
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mongodb-access
+        #       key: uri
