@@ -23,6 +23,16 @@ spec:
             cpu: "1000m"
             memory: "256Mi"
         env:
+        - name: MONGODB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-access
+              key: username
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-access
+              key: password
         - name: AWS_REGION
           value: us-east-2
         - name: SQS_URL
