@@ -12,5 +12,7 @@ node('') {
 
     stage('Deploy'){
         sh 'kubectl apply -f deployments/'
+        sh 'kubectl apply -f services/'
+
     }
 }
