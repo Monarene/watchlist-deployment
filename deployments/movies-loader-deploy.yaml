@@ -15,8 +15,16 @@ spec:
       containers:
       - name: movies-loader
         image: monarene/movie-loader:develop
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "128Mi"
+          limits:
+            cpu: "1000m"
+            memory: "256Mi"
         env:
         - name: AWS_REGION
           value: us-east-2
         - name: SQS_URL
           value: https://sqs.us-east-2.amazonaws.com/796834059009/movies_to_parse_sandbox-test
+      
