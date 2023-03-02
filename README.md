@@ -1,1 +1,1 @@
-## Updated readme for jenkins, added the push eventually
+## Updated readme for jenkins, added the push 
