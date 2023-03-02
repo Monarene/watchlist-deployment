@@ -33,4 +33,4 @@ spec:
               name: mongodb-access
               key: database
         - name: MONGO_URI
-          value: mongodb.watchlist.svc.cluster.local
+          value: mongodb://root:root@mongodb/watchlist?retryWrites=true&w=majority&poolSize=1
