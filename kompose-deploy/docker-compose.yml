@@ -1,0 +1,39 @@
+version: "3.3"
+
+services:
+  movies-loader:
+    image: monarene/movie-loader:develop
+    environment:
+      - AWS_REGION=us-east-2
+      - SQS_URL=https://sqs.us-east-2.amazonaws.com/796834059009/movies_to_parse_sandbox-test
+  
+  movies-parser:
+    image: monarene/movies-parser:develop
+    environment:
+      - AWS_REGION=us-east-2
+      - SQS_URL=https://sqs.us-east-2.amazonaws.com/796834059009/movies_to_parse_sandbox-test
+      - MONGO_URI=mongodb://root:PASSWORD@mongodb/watchlist?retryWrites=true&w=majority&poolSize=1
+      - MONGO_DATABASE=watchlist
+    depends_on:
+      - mongodb
+  
+  movies-store:
+    image: monarene/movie-store:develop
+    environment:
+      - mongodb://root:PASSWORD@mongodb/watchlist?retryWrites=true&w=majority&poolSize=1
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+
+  movies-marketplace:
+    image: monarene/movies-marketplace:develop
+    ports:
+      - 80:80
+
+  mongodb:
+    image: bitnami/mongodb:latest
+    environment:
+      - MONGODB_USERNAME=root
+      - MONGODB_PASSWORD=PASSWORD
+      - MONGODB_DATABASE=watchlist
