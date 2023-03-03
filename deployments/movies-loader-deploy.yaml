@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: movies-loader
-        image: monarene/movie-loader:develop
+        image: monarene/movie-loader:develop 
         resources:
           requests:
             cpu: "500m"
